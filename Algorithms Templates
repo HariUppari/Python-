@@ -36,4 +36,14 @@ def bfs_graph(graph, start):
                 queue.append(neighbor)  # Add unvisited neighbors to the queue
                 visited.add(neighbor)  # Mark the neighbor as visited
 
+---Key Points
+------Tree BFS:
+
+-----------Straightforward as there are no cycles.
+-----------Process the root, then explore its children level by level.
+------Graph BFS:
+
+-----------Use a visited set to handle cycles and avoid redundant visits.
+-----------Works for both directed and undirected graphs.
+
 
