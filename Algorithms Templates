@@ -1,1 +1,39 @@
+############ BFS 
+#####Trees
+from collections import deque
+
+def bfs_tree(root):
+    if not root:
+        return
+
+    queue = deque([root])  # Initialize the queue with the root node
+
+    while queue:
+        node = queue.popleft()  # Remove the front node from the queue
+        print(node.val)  # Process the current node (e.g., print its value)
+
+        # Add the children of the current node to the queue
+        if node.left:
+            queue.append(node.left)
+        if node.right:
+            queue.append(node.right)
+
+####Graphs
+from collections import deque
+
+def bfs_graph(graph, start):
+    visited = set()  # To keep track of visited nodes
+    queue = deque([start])  # Initialize the queue with the starting node
+    visited.add(start)  # Mark the start node as visited
+
+    while queue:
+        node = queue.popleft()  # Remove the front node from the queue
+        print(node)  # Process the current node (e.g., print its value)
+
+        # Explore all neighbors of the current node
+        for neighbor in graph[node]:
+            if neighbor not in visited:
+                queue.append(neighbor)  # Add unvisited neighbors to the queue
+                visited.add(neighbor)  # Mark the neighbor as visited
+
 
