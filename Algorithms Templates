@@ -69,3 +69,69 @@ def recursion_function(parameters):
 ----Avoid Redundant Work: Use memoization or dynamic programming to optimize recursive calls.
 ----Space Complexity: Recursion uses stack space proportional to the depth of the recursion tree.
 
+###############DFS Tree and Graphs
+############Trees
+######Recursive 
+def dfs_tree(node):
+    # Base case: If the node is None, return
+    if not node:
+        return
+
+    # Process the current node (e.g., print its value)
+    print(node.val)
+
+    # Recursively call DFS for the left and right children
+    dfs_tree(node.left)
+    dfs_tree(node.right)
+########Iterative
+def dfs_tree_iterative(root):
+    if not root:
+        return
+
+    stack = [root]  # Initialize stack with root node
+
+    while stack:
+        node = stack.pop()  # Remove the top node from the stack
+        print(node.val)  # Process the current node
+
+        # Add the right child first, then the left child (LIFO ensures left is processed first)
+        if node.right:
+            stack.append(node.right)
+        if node.left:
+            stack.append(node.left)
+#############Graphs
+######Recursive
+def dfs_graph(node, graph, visited):
+    # Base case: If the node is already visited, return
+    if node in visited:
+        return
+
+    # Mark the node as visited
+    visited.add(node)
+
+    # Process the current node (e.g., print its value)
+    print(node)
+
+    # Recursively call DFS for all neighbors
+    for neighbor in graph[node]:
+        dfs_graph(neighbor, graph, visited)
+#########Iterative
+def dfs_graph_iterative(start_node, graph):
+    visited = set()  # Track visited nodes
+    stack = [start_node]  # Initialize stack with the starting node
+
+    while stack:
+        node = stack.pop()  # Remove the top node from the stack
+        
+        # Process the node if not visited
+        if node not in visited:
+            print(node)  # Process the current node
+            visited.add(node)
+
+            # Add neighbors to the stack (unvisited neighbors)
+            for neighbor in reversed(graph[node]):  # Reverse for consistent order
+                if neighbor not in visited:
+                    stack.append(neighbor)
+
+
+
