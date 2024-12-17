@@ -46,4 +46,26 @@ def bfs_graph(graph, start):
 -----------Use a visited set to handle cycles and avoid redundant visits.
 -----------Works for both directed and undirected graphs.
 
+##################Recursion
+def recursion_function(parameters):
+    # Base case: Stop recursion when a condition is met
+    if base_case_condition:
+        return base_case_result
+
+    # Recursive case: Process the current state and make a recursive call
+    result = process_current_state(parameters)
+
+    # Recursive call to solve the smaller subproblem
+    recursion_function(updated_parameters)
+
+    # Optional: Combine results if necessary
+    return final_result
+
+
+
+----Base Case: Always define the stopping condition to prevent infinite recursion.
+----Small Steps: Make progress in each recursive call by reducing the problem size.
+----Combine Results: Aggregate results if solving multiple subproblems (e.g., divide and conquer).
+----Avoid Redundant Work: Use memoization or dynamic programming to optimize recursive calls.
+----Space Complexity: Recursion uses stack space proportional to the depth of the recursion tree.
 
