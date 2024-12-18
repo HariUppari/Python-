@@ -10,3 +10,15 @@ def backtrack(current_state, other_parameters):
             apply_option(option, current_state)  # Modify the state with the option
             backtrack(current_state, other_parameters)  # Recurse with the updated state
             undo_option(option, current_state)  # Undo the change (backtracking)
+
+
+
+N-Queens Problem
+Problem:
+Place n queens on an n x n chessboard such that no two queens attack each other.
+
+Constraints:
+No two queens can be in the same row, column, or diagonal.
+
+Pruning:
+Stop exploring further if placing a queen violates the above constraints.
