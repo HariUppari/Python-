@@ -57,3 +57,48 @@ def solve_n_queens(n):
 n = 4
 print(solve_n_queens(n))
 
+################Permuatations Problem
+
+class Solution(object):
+    # Helper function to perform recursive backtracking
+    def permuteHelper(self, nums, current_result, result):
+        """
+        This function generates permutations by exploring all possible arrangements 
+        of `nums` using recursion and backtracking.
+        
+        :param nums: List[int] - The list of numbers to permute.
+        :param current_result: List[int] - The current partial permutation.
+        :param result: List[List[int]] - The list to store all complete permutations.
+        """
+        
+        # Base case: When the current result contains all the numbers
+        if len(current_result) == len(nums):
+            # Add a copy of the current permutation to the result
+            result.append(current_result[:])  # Use [:] to avoid reference issues
+            return
+        
+        # Iterate over all numbers in the input list
+        for i in range(len(nums)):
+            # Check if the current number is already in the partial result
+            if nums[i] not in current_result:  # Avoid using the same number more than once
+                # Include the current number in the partial result (Choose)
+                current_result.append(nums[i])
+                
+                # Recursively explore with the updated partial result (Explore)
+                self.permuteHelper(nums, current_result, result)
+                
+                # Remove the last number added to backtrack (Unchoose)
+                current_result.pop()
+    
+    # Main function to generate permutations
+    def permute(self, nums):
+        """
+        This function initializes the recursive process to generate permutations.
+        
+        :param nums: List[int] - The list of numbers to permute.
+        :return: List[List[int]] - A list containing all permutations of the input list.
+        """
+        result = []  # Initialize the result list to store permutations
+        self.permuteHelper(nums, [], result)  # Start the backtracking process
+        return result  # Return the list of permutations
+
