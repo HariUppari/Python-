@@ -1,0 +1,34 @@
+######################Longest substring witout repeating charecters
+def length_of_longest_substring(s):
+    char_set = set()  # To track unique characters in the current window
+    left = 0          # Left pointer
+    max_length = 0    # To store the maximum length of the substring
+    
+    for right in range(len(s)):
+        # If the character is already in the set, shrink the window
+        while s[right] in char_set:
+            char_set.remove(s[left])
+            left += 1
+        
+        # Add the current character to the set and update max_length
+        char_set.add(s[right])
+        max_length = max(max_length, right - left + 1)
+    
+    return max_length
+
+# Example Usage:
+print(length_of_longest_substring("abcabcbb"))  # Output: 3 ("abc")
+
+
+Example Problems
+---Longest Substring with At Most K Distinct Characters
+---Longest Substring with All Unique Characters
+---Longest Substring with At Least K Repeating Characters
+---Minimum Window Substring
+--- Permutation in String
+---Find All Anagrams in a String
+--Longest Subarray with Sum at Most K
+---Subarrays with K Different Integers
+---Maximum Erasure Value
+---Longest Repeating Character Replacement
+
