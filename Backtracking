@@ -102,3 +102,20 @@ class Solution(object):
         self.permuteHelper(nums, [], result)  # Start the backtracking process
         return result  # Return the list of permutations
 
+--------------Coin Change 
+
+def coinChangeRecursive(coins, amount):
+    def backtrack(remaining, index):
+        if remaining == 0:
+            return 1  # Found a valid combination
+        if remaining < 0 or index == len(coins):
+            return 0  # No valid combination
+
+        # Include the current coin
+        include = backtrack(remaining - coins[index], index)
+        # Exclude the current coin
+        exclude = backtrack(remaining, index + 1)
+
+        return include + exclude
+
+    return backtrack(amount, 0)
