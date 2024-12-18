@@ -119,3 +119,56 @@ def coinChangeRecursive(coins, amount):
         return include + exclude
 
     return backtrack(amount, 0)
+
+
+----------subsets
+def generate_subsets(nums):
+    def backtrack(index, path):
+        # Base case: When index exceeds the list length
+        if index == len(nums):
+            result.append(path[:])  # Add the current subset
+            return
+        
+        # Decision 1: Exclude the current element
+        backtrack(index + 1, path)
+        
+        # Decision 2: Include the current element
+        path.append(nums[index])
+        backtrack(index + 1, path)
+        
+        # Undo the choice (backtrack)
+        path.pop()
+
+    result = []
+    backtrack(0, [])
+    return result
+
+# Example Usage
+nums = [1, 2, 3]
+subsets = generate_subsets(nums)
+print("All subsets:", subsets)
+
+----2nd solution 
+def generate_subsets(nums):
+    def backtrack(start, current_subset):
+        # Add the current subset to the result
+        result.append(current_subset[:])
+        
+        # Explore further subsets by including elements one by one
+        for i in range(start, len(nums)):
+            # Include nums[i]
+            current_subset.append(nums[i])
+            # Recur to generate subsets including nums[i]
+            backtrack(i + 1, current_subset)
+            # Backtrack: Remove nums[i] to explore subsets without it
+            current_subset.pop()
+
+    result = []
+    backtrack(0, [])
+    return result
+
+# Example Usage
+nums = [1, 2, 3]
+subsets = generate_subsets(nums)
+print("All subsets:", subsets)
+
