@@ -200,3 +200,8 @@ def path_sum(root, target_sum):
     return result
 
 
+
+---------Key Takeaways:
+Boolean Return Type: Use it for problems that ask if a solution exists (e.g., path sum).
+Value Return Type: Use it for problems where all solutions are needed (e.g., N-Queens).
+Global List for Results: Return all solutions by accumulating results in a global or shared list.
