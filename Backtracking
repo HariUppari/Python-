@@ -205,3 +205,11 @@ def path_sum(root, target_sum):
 Boolean Return Type: Use it for problems that ask if a solution exists (e.g., path sum).
 Value Return Type: Use it for problems where all solutions are needed (e.g., N-Queens).
 Global List for Results: Return all solutions by accumulating results in a global or shared list.
+
+
+
+----Meaning of Implicit Exclusion
+--------In explicit exclusion, you would manually handle both the inclusion and exclusion of an element or move 
+        (e.g., deciding whether or not to "pick" an element in a subset problem).
+--------In implicit exclusion, you let the natural flow of recursion handle the exclusion. When recursion backtracks 
+        (returns from the current recursive call), it automatically discards the current choice and moves back to explore other possibilities.
