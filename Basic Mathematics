@@ -32,5 +32,29 @@ class Solution(object):
                 high = mid - 1
             else:
                 low = mid + 1
+
+-----------------Power of x 
+class Solution(object):
+    def myPow(self, x, n):
+        """
+        :type x: float
+        :type n: int
+        :rtype: float
+        """
+        result = 0
+        if n == 0:
+            return 1  
+        if n < 0:
+            x = 1 / x  # Handle negative powers
+            n = -n
+
+        result = 1
+        while n > 0:
+            if n % 2 == 1:  # If p is odd
+                result *= x
+            x *= x  # Square the base
+            n //= 2  # Divide the power by 2
+        return result
+        
         
         
