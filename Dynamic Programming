@@ -1,0 +1,33 @@
+
+------------------------Longest Increasing Subsequnce
+class Solution(object):
+    def __init__(self):
+        self.memo = {}
+
+    def lengthOfLISHelper(self, index, nums, prev_index):
+        if index == len(nums):
+            return 0
+        
+        # Memoization key: (index, prev_index)
+        key = (index, prev_index)
+        if key in self.memo:
+            return self.memo[key]
+        
+        # Exclude the current element
+        exclude = self.lengthOfLISHelper(index + 1, nums, prev_index)
+        
+        # Include the current element if valid
+        include = 0
+        if prev_index == -1 or nums[prev_index] < nums[index]:
+            include = 1 + self.lengthOfLISHelper(index + 1, nums, index)
+        
+        # Store the result in memo and return the maximum of include and exclude
+        self.memo[key] = max(include, exclude)
+        return self.memo[key]
+    
+    def lengthOfLIS(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        return self.lengthOfLISHelper(0, nums, -1)
