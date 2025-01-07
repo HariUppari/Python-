@@ -5,7 +5,7 @@ class Solution(object):
         if index == len(word):
             return True
         
-        # Out of bounds or character mismatch or already visited
+        # Out of bounds or character mismatch or already visited(no backward direction)
         if row < 0 or row >= len(board) or column < 0 or column >= len(board[0]) or board[row][column] != word[index]:
             return False
         
