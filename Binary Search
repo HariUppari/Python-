@@ -1,0 +1,28 @@
+-------------------------Search an element in 2D matrix
+class Solution(object):
+    def searchMatrix(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        # Initialize the low and high pointers for binary search
+        low = 0
+        high = (len(matrix) * len(matrix[0])) - 1
+        
+        # Binary search loop
+        while low <= high:
+            mid = (low + high) // 2
+            # Correctly map the mid index to 2D indices
+            i = mid // len(matrix[0])  # Row index
+            j = mid % len(matrix[0])  # Column index
+            
+            if matrix[i][j] == target:
+                return True
+            elif matrix[i][j] < target:
+                low = mid + 1
+            else:
+                high = mid - 1
+        
+        # If not found, return False
+        return False
